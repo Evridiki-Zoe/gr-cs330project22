@@ -1,0 +1,32 @@
+find_package(PkgConfig)
+
+PKG_CHECK_MODULES(PC_GR_CS330PROJECT22 gnuradio-cs330project22)
+
+FIND_PATH(
+    GR_CS330PROJECT22_INCLUDE_DIRS
+    NAMES gnuradio/cs330project22/api.h
+    HINTS $ENV{CS330PROJECT22_DIR}/include
+        ${PC_CS330PROJECT22_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    GR_CS330PROJECT22_LIBRARIES
+    NAMES gnuradio-cs330project22
+    HINTS $ENV{CS330PROJECT22_DIR}/lib
+        ${PC_CS330PROJECT22_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+          )
+
+include("${CMAKE_CURRENT_LIST_DIR}/gnuradio-cs330project22Target.cmake")
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(GR_CS330PROJECT22 DEFAULT_MSG GR_CS330PROJECT22_LIBRARIES GR_CS330PROJECT22_INCLUDE_DIRS)
+MARK_AS_ADVANCED(GR_CS330PROJECT22_LIBRARIES GR_CS330PROJECT22_INCLUDE_DIRS)
