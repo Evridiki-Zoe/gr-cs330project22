@@ -1,10 +1,10 @@
-id: cs330project22_frame_sync
-label: Frame sync
+id: cs330project22_interleaver
+label: Interleaver
 category: '[cs330project22]'
 
 templates:
   imports: from gnuradio import cs330project22
-  make: cs330project22.frame_sync(${preamble}, ${preamble_len}, ${sync_word}, ${mod})
+  make: cs330project22.interleaver(${block_size.val})
 
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
@@ -13,27 +13,12 @@ templates:
 #     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 #     * default
 parameters:
-- id: preamble
-  label: Preamble
-  dtype: raw
-  default: '0xAA'
-
-- id: preamble_len
-  label: Preamble length
-  dtype: int
-  default: 64
-
-- id: sync_word
-  label: Synchronization word
-  dtype: raw
-  default: '[0x58,0x9A]'
-
-- id: mod
-  label: Modulation
-  dtype: int
-  options: [0, 1]
-  option_labels: [BPSK, QPSK]
-  default: 0
+- id: block_size
+  label: Block Size
+  dtype: enum
+  options: ['96', '192', '384']
+  option_attributes:
+        val: [96, 192, 384]
 
 #  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
 #  Keys include:
@@ -43,12 +28,11 @@ parameters:
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
-- label: in
-  domain: stream
-  dtype: byte
+- label: pdu_in
+  domain: message
 
 outputs:
-- label: pdu
+- label: pdu_out
   domain: message
 
 #  'file_format' specifies the version of the GRC yml format used in the file

@@ -78,6 +78,22 @@ blocks:
     coordinate: [64, 180.0]
     rotation: 0
     state: enabled
+- name: cs330project22_deinterleaver_0
+  id: cs330project22_deinterleaver
+  parameters:
+    affinity: ''
+    alias: ''
+    block_size: '96'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 316.0]
+    rotation: 0
+    state: true
 - name: cs330project22_framer_0
   id: cs330project22_framer
   parameters:
@@ -96,6 +112,22 @@ blocks:
     coordinate: [992, 188.0]
     rotation: 0
     state: enabled
+- name: cs330project22_interleaver_0
+  id: cs330project22_interleaver
+  parameters:
+    affinity: ''
+    alias: ''
+    block_size: '96'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1184, 364.0]
+    rotation: 0
+    state: true
 - name: digital_crc32_async_bb_0
   id: digital_crc32_async_bb
   parameters:
@@ -154,7 +186,9 @@ blocks:
 
 connections:
 - [blocks_message_strobe_random_0, strobe, pdu_random_pdu_0, generate]
-- [cs330project22_framer_0, frame, blocks_message_debug_0, print_pdu]
+- [cs330project22_deinterleaver_0, pdu_out, blocks_message_debug_0, print]
+- [cs330project22_framer_0, frame, cs330project22_interleaver_0, pdu_in]
+- [cs330project22_interleaver_0, pdu_out, cs330project22_deinterleaver_0, pdu_in]
 - [digital_crc32_async_bb_0, out, cs330project22_framer_0, pdu]
 - [pdu_random_pdu_0, pdus, digital_crc32_async_bb_0, in]
 

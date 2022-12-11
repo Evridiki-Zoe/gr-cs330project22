@@ -25,6 +25,8 @@ namespace py = pybind11;
     void bind_frame_sync(py::module& m);
     void bind_fec_encoder(py::module& m);
     void bind_fec_decoder(py::module& m);
+    void bind_interleaver(py::module& m);
+    void bind_deinterleaver(py::module& m);
 // ) END BINDING_FUNCTION_PROTOTYPES
 
 
@@ -57,5 +59,7 @@ PYBIND11_MODULE(cs330project22_python, m)
     bind_frame_sync(m);
     bind_fec_encoder(m);
     bind_fec_decoder(m);
+    bind_interleaver(m);
+    bind_deinterleaver(m);
     // ) END BINDING_FUNCTION_CALLS
 }
