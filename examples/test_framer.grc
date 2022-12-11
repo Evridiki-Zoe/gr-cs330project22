@@ -95,7 +95,7 @@ blocks:
     bus_structure: null
     coordinate: [992, 188.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: digital_crc32_async_bb_0
   id: digital_crc32_async_bb
   parameters:
@@ -150,7 +150,7 @@ blocks:
     bus_structure: null
     coordinate: [416, 180.0]
     rotation: 0
-    state: true
+    state: enabled
 
 connections:
 - [blocks_message_strobe_random_0, strobe, pdu_random_pdu_0, generate]

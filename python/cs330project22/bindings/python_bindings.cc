@@ -22,6 +22,7 @@ namespace py = pybind11;
 /**************************************/
 // BINDING_FUNCTION_PROTOTYPES(
     void bind_framer(py::module& m);
+    void bind_frame_sync(py::module& m);
 // ) END BINDING_FUNCTION_PROTOTYPES
 
 
@@ -51,5 +52,6 @@ PYBIND11_MODULE(cs330project22_python, m)
     /**************************************/
     // BINDING_FUNCTION_CALLS(
     bind_framer(m);
+    bind_frame_sync(m);
     // ) END BINDING_FUNCTION_CALLS
 }

@@ -11,5 +11,6 @@
 ########################################################################
 install(FILES
     api.h
-    framer.h DESTINATION include/gnuradio/cs330project22
+    framer.h
+    frame_sync.h DESTINATION include/gnuradio/cs330project22
 )

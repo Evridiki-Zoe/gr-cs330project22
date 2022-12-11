@@ -29,7 +29,8 @@ include(GrPybind)
 ########################################################################
 
 list(APPEND cs330project22_python_files
-    framer_python.cc python_bindings.cc)
+    framer_python.cc
+    frame_sync_python.cc python_bindings.cc)
 
 GR_PYBIND_MAKE_OOT(cs330project22
    ../../..
