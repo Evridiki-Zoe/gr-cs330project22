@@ -7,7 +7,7 @@ Examples and blocks can be found at https://gitlab.com/surligas/gr-tutorial
 
 ## Installation
 
-1. `https://github.com/Evridiki-Zoe/gr-cs330project22`
+1. `git clone https://github.com/Evridiki-Zoe/gr-cs330project22.git`
 2. `cd gr-cs330project22`
 3. `mkdir build`
 4. `cd build`
