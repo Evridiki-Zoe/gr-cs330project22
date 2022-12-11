@@ -12,5 +12,7 @@
 install(FILES
     api.h
     framer.h
-    frame_sync.h DESTINATION include/gnuradio/cs330project22
+    frame_sync.h
+    fec_encoder.h
+    fec_decoder.h DESTINATION include/gnuradio/cs330project22
 )

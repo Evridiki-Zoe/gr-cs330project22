@@ -8,5 +8,7 @@
 
 install(FILES
     cs330project22_framer.block.yml
-    cs330project22_frame_sync.block.yml DESTINATION share/gnuradio/grc/blocks
+    cs330project22_frame_sync.block.yml
+    cs330project22_fec_encoder.block.yml
+    cs330project22_fec_decoder.block.yml DESTINATION share/gnuradio/grc/blocks
 )

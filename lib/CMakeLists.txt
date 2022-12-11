@@ -14,6 +14,8 @@ include(GrPlatform) #define LIB_SUFFIX
 list(APPEND cs330project22_sources
     framer_impl.cc
     frame_sync_impl.cc
+    fec_encoder_impl.cc
+    fec_decoder_impl.cc
 )
 
 set(cs330project22_sources "${cs330project22_sources}" PARENT_SCOPE)
