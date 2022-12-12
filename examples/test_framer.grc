@@ -56,7 +56,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1304, 144.0]
+    coordinate: [1288, 136.0]
     rotation: 0
     state: true
 - name: blocks_message_strobe_random_0
@@ -75,25 +75,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [64, 180.0]
+    coordinate: [64, 172.0]
     rotation: 0
     state: enabled
-- name: cs330project22_deinterleaver_0
-  id: cs330project22_deinterleaver
-  parameters:
-    affinity: ''
-    alias: ''
-    block_size: '96'
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1400, 316.0]
-    rotation: 0
-    state: true
 - name: cs330project22_framer_0
   id: cs330project22_framer
   parameters:
@@ -109,25 +93,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [992, 188.0]
+    coordinate: [976, 180.0]
     rotation: 0
     state: enabled
-- name: cs330project22_interleaver_0
-  id: cs330project22_interleaver
-  parameters:
-    affinity: ''
-    alias: ''
-    block_size: '96'
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1184, 364.0]
-    rotation: 0
-    state: true
 - name: digital_crc32_async_bb_0
   id: digital_crc32_async_bb
   parameters:
@@ -141,7 +109,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [720, 204.0]
+    coordinate: [720, 196.0]
     rotation: 0
     state: enabled
 - name: network_socket_pdu_0
@@ -180,15 +148,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [416, 180.0]
+    coordinate: [400, 172.0]
     rotation: 0
     state: enabled
 
 connections:
+- [blocks_message_strobe_random_0, strobe, digital_crc32_async_bb_0, in]
 - [blocks_message_strobe_random_0, strobe, pdu_random_pdu_0, generate]
-- [cs330project22_deinterleaver_0, pdu_out, blocks_message_debug_0, print]
-- [cs330project22_framer_0, frame, cs330project22_interleaver_0, pdu_in]
-- [cs330project22_interleaver_0, pdu_out, cs330project22_deinterleaver_0, pdu_in]
+- [cs330project22_framer_0, frame, blocks_message_debug_0, print_pdu]
 - [digital_crc32_async_bb_0, out, cs330project22_framer_0, pdu]
 - [pdu_random_pdu_0, pdus, digital_crc32_async_bb_0, in]
 
